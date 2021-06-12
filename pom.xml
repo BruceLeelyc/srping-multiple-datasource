@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lixl.mybatis</groupId>
-    <artifactId>srpingboot-disruptor</artifactId>
+    <artifactId>spring-multiple-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>srpingboot-disruptor</name>
+    <name>spring-multiple-datasource</name>
     <description>multiple datasource config</description>
     <properties>
         <java.version>1.8</java.version>
