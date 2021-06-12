@@ -1,16 +1,19 @@
 package com.lixl.mybatis.demo.pojo.dto;
 
+import lombok.Data;
+
 /**
  * @ClassName: DomainBeanDataStream
  * @Description:
  * @Author: lixl
  * @Date: 2021/6/12 15:42
  */
-public class DomainBeanDataStream {
+@Data
+public class BeanDataParam {
 
-    private String key;
+    private String flag;
 
-    private BaseBean bean;
+    private BaseBean param;
 
-    private int expireSeconds;
+    private int expire;
 }

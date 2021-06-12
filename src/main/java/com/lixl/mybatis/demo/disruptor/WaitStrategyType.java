@@ -1,53 +1,35 @@
-package net.nicetuan.weapp.data.disruptor.strategy;
+package com.lixl.mybatis.demo.disruptor;
 
 import com.lmax.disruptor.*;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author hanxiaowei
- */
 public enum WaitStrategyType {
 
-    /**
-     * @see BlockingWaitStrategy
-     */
     BLOCKING {
         public WaitStrategy instance() {
             return new BlockingWaitStrategy();
         }
     },
 
-    /**
-     * @see BusySpinWaitStrategy
-     */
     BUSY_SPIN {
         public WaitStrategy instance() {
             return new BusySpinWaitStrategy();
         }
     },
 
-    /**
-     * @see LiteBlockingWaitStrategy
-     */
     LITE_BLOCKING {
         public WaitStrategy instance() {
             return new LiteBlockingWaitStrategy();
         }
     },
 
-    /**
-     * @see SleepingWaitStrategy
-     */
     SLEEPING_WAIT {
         public WaitStrategy instance() {
             return new SleepingWaitStrategy();
         }
     },
 
-    /**
-     * @see YieldingWaitStrategy
-     */
     YIELDING {
         public WaitStrategy instance() {
             return new YieldingWaitStrategy();

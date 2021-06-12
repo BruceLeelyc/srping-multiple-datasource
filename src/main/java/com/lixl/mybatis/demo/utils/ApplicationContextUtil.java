@@ -1,34 +1,30 @@
-package com.yhdx.tool.ctx.application;
+package com.lixl.mybatis.demo.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-/**
- * @author zhen.ling
- */
 @Component
-public class ApplicationContextHolder implements ApplicationContextAware {
+public class ApplicationContextUtil implements ApplicationContextAware {
 
-	private static ApplicationContext APPLICATION_CTX = null;
+	private static ApplicationContext context;
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext)
 			throws BeansException {
-		// APPLICATION_CTX = ContextLoader.getCurrentWebApplicationContext();
-		APPLICATION_CTX = applicationContext;
+		context = applicationContext;
 	}
 
 	public static <T> T getBean(Class<T> clazz) {
-		return APPLICATION_CTX.getBean(clazz);
+		return context.getBean(clazz);
 	}
 
 	public static Object getBean(String name) {
-		return APPLICATION_CTX.getBean(name);
+		return context.getBean(name);
 	}
 
 	public static <T> T getBean(String name, Class<T> clazz) {
-		return APPLICATION_CTX.getBean(name, clazz);
+		return context.getBean(name, clazz);
 	}
 }

@@ -1,28 +1,32 @@
-package net.nicetuan.weapp.data.disruptor.processor;
+package com.lixl.mybatis.demo.disruptor.process;
 
-import com.yhdx.tool.caching.redisson.RedissonCache;
-import com.yhdx.tool.ctx.application.ApplicationContextHolder;
-import com.yhdx.tool.log.domain.CommonLogger;
-import com.yhdx.tool.log.util.LoggerUtils;
-import net.nicetuan.weapp.data.disruptor.model.DomainBeanDataStream;
+import com.lixl.mybatis.demo.pojo.User;
+import com.lixl.mybatis.demo.pojo.dto.BeanDataParam;
+import com.lixl.mybatis.demo.service.UserService;
+import com.lixl.mybatis.demo.utils.ApplicationContextUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * @Description: HandpickDataStreamEventProcessor
+ * @Description: Demo1EventProcessor
  * @author: lixl
  * @Date: 2021/5/12 15:48
  */
-public class HandpickDataStreamEventProcessor extends BaseEventProcessor<DomainBeanDataStream> {
+public class Demo1EventProcessor extends BaseEventProcessor<BeanDataParam> {
+
+    private static final Logger logger = LoggerFactory.getLogger(Demo1EventProcessor.class);
 
     @Override
-    public void onEvent(DomainBeanDataStream dataStream, long l, boolean b) throws Exception {
-        LoggerUtils.info(CommonLogger.BIZ, " 接收到消息-----HandpickDataStream");
+    public void onEvent(BeanDataParam dataStream, long l, boolean b) throws Exception {
+        logger.info("receive message");
         super.onEvent(dataStream, l, b);
     }
 
     @Override
-    public void onEvent(DomainBeanDataStream dataStream) throws Exception {
-        LoggerUtils.info(CommonLogger.BIZ, ">>>notify>>>",dataStream.getKey()," bean class:",dataStream.getBean().getClass().getName());
-        RedissonCache redissonCache = ApplicationContextHolder.getBean("selectedRedissonCache", RedissonCache.class);
-        redissonCache.set(dataStream.getKey(), dataStream.getBean(),dataStream.getExpireSeconds());
+    public void onEvent(BeanDataParam dataStream) throws Exception {
+        logger.info("event key:{}, class:{}", dataStream.getFlag(), dataStream.getParam().getClass().getName());
+        UserService userService = ApplicationContextUtil.getBean(UserService.class);
+        User user = userService.findById(1L);
+        logger.info(user.toString());
     }
 }

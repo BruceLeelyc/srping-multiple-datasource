@@ -1,4 +1,4 @@
-package com.lixl.mybatis.demo.disruptor;
+package com.lixl.mybatis.demo.disruptor.demo;
 
 import com.lmax.disruptor.EventHandler;
 import com.lmax.disruptor.WorkHandler;

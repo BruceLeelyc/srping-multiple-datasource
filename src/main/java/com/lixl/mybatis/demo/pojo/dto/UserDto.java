@@ -1,4 +1,4 @@
-package com.lixl.mybatis.demo.pojo;
+package com.lixl.mybatis.demo.pojo.dto;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ import java.util.Date;
  * @Date: 2021/5/25 11:37
  */
 @Data
-public class User implements Serializable {
+public class UserDto extends BaseBean implements Serializable {
 
     private static final long serialVersionUID = -2230628820743132767L;
 

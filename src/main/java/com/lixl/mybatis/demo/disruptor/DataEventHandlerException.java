@@ -1,24 +1,24 @@
-package net.nicetuan.weapp.data.disruptor.exception;
+package com.lixl.mybatis.demo.disruptor;
 
 import com.lmax.disruptor.ExceptionHandler;
-import com.yhdx.tool.json.JsonUtils;
-import com.yhdx.tool.log.domain.CommonLogger;
-import com.yhdx.tool.log.util.LoggerUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class DataStreamEventHandlerException implements ExceptionHandler {
+public class DataEventHandlerException implements ExceptionHandler {
+    private static final Logger logger = LoggerFactory.getLogger(DataEventHandlerException.class);
     @Override
     public void handleEventException(Throwable throwable, long sequence, Object event) {
-        LoggerUtils.error(CommonLogger.BIZ, throwable.fillInStackTrace()," process data error sequence=",sequence," ,event=", JsonUtils.toJson(event));
+        logger.error("handle error stack:{}, sequence:{}, data:{}", throwable.fillInStackTrace(), sequence, event);
         throwable.fillInStackTrace();
     }
 
     @Override
     public void handleOnStartException(Throwable throwable) {
-        LoggerUtils.error(CommonLogger.BIZ, throwable.fillInStackTrace()," start disruptor error",throwable.getMessage());
+        logger.error("disruptor start error:{},meseage:{}", throwable.fillInStackTrace(), throwable.getMessage());
     }
 
     @Override
     public void handleOnShutdownException(Throwable throwable) {
-        LoggerUtils.error(CommonLogger.BIZ, throwable.fillInStackTrace()," shutdown disruptor error",throwable.getMessage());
+        logger.error("disruptor shutdown error:{},meseage:{}", throwable.fillInStackTrace(), throwable.getMessage());
     }
 }

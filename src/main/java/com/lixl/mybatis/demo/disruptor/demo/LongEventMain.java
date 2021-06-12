@@ -1,4 +1,4 @@
-package com.lixl.mybatis.demo.disruptor;
+package com.lixl.mybatis.demo.disruptor.demo;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;

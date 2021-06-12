@@ -1,7 +1,10 @@
 package com.lixl.mybatis.demo.controller;
 
+import com.lixl.mybatis.demo.disruptor.DisruptorDataPublisher;
 import com.lixl.mybatis.demo.pojo.SysTable;
 import com.lixl.mybatis.demo.pojo.User;
+import com.lixl.mybatis.demo.pojo.dto.BeanDataParam;
+import com.lixl.mybatis.demo.pojo.dto.UserDto;
 import com.lixl.mybatis.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +24,8 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @Value("${sys.datasource.url}")
-    private String url;
+    @Autowired
+    private DisruptorDataPublisher disruptorDataPublisher;
 
     @Autowired
     private UserService userService;
@@ -30,6 +33,13 @@ public class UserController {
     @RequestMapping("/get")
     public Object getUser(@RequestParam("userId")Long userId) {
         User user = userService.findById(userId);
+        BeanDataParam data = new BeanDataParam();
+        data.setFlag("/user/get");
+        UserDto userDto = new UserDto();
+        userDto.setUserId(userId);
+        data.setParam(userDto);
+        data.setExpire(1000);
+        disruptorDataPublisher.publish(data);
         return user;
     }
 

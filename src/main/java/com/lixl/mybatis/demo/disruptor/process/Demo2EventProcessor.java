@@ -8,13 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Description: HandpickDataStreamEventProcessor
+ * @Description: Demo2EventProcessor
  * @author: lixl
  * @Date: 2021/5/12 15:48
  */
-public class Demo1EventProcessor extends BaseEventProcessor<BeanDataParam> {
+public class Demo2EventProcessor extends BaseEventProcessor<BeanDataParam> {
 
-    private static final Logger logger = LoggerFactory.getLogger(Demo1EventProcessor.class);
+    private static final Logger logger = LoggerFactory.getLogger(Demo2EventProcessor.class);
 
     @Override
     public void onEvent(BeanDataParam dataStream, long l, boolean b) throws Exception {
@@ -24,9 +24,9 @@ public class Demo1EventProcessor extends BaseEventProcessor<BeanDataParam> {
 
     @Override
     public void onEvent(BeanDataParam dataStream) throws Exception {
-        logger.info("event key:{}, class:{}", dataStream.getKey(), dataStream.getBean().getClass().getName());
-        UserService userService = ApplicationContextUtil.getBean("userService", UserService.class);
-        User user = userService.findById(1L);
+        logger.info("event key:{}, class:{}", dataStream.getFlag(), dataStream.getParam().getClass().getName());
+        UserService userService = ApplicationContextUtil.getBean(UserService.class);
+        User user = userService.findById(2L);
         logger.info(user.toString());
     }
 }

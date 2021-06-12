@@ -1,23 +1,23 @@
-package net.nicetuan.weapp.data.disruptor.translator;
+package com.lixl.mybatis.demo.disruptor;
 
+import com.lixl.mybatis.demo.pojo.dto.BeanDataParam;
 import com.lmax.disruptor.EventTranslator;
-import net.nicetuan.weapp.data.disruptor.model.DomainBeanDataStream;
 
 /**
  * @author hanxiaowei
  */
-public class DomainBeanDataStreamTranslator implements EventTranslator<DomainBeanDataStream> {
+public class BeanDataParamTranslator implements EventTranslator<BeanDataParam> {
 
-    private DomainBeanDataStream dataStream;
+    private BeanDataParam data;
 
-    public DomainBeanDataStreamTranslator(DomainBeanDataStream dataStream) {
-        this.dataStream = dataStream;
+    public BeanDataParamTranslator(BeanDataParam data) {
+        this.data = data;
     }
 
     @Override
-    public void translateTo(DomainBeanDataStream dataStream, long sequence) {
-        dataStream.setKey(this.dataStream.getKey());
-        dataStream.setBean(this.dataStream.getBean());
-        dataStream.setExpireSeconds(this.dataStream.getExpireSeconds());
+    public void translateTo(BeanDataParam data, long sequence) {
+        data.setFlag(this.data.getFlag());
+        data.setParam(this.data.getParam());
+        data.setExpire(this.data.getExpire());
     }
 }

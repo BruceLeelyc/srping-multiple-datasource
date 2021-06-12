@@ -1,12 +1,10 @@
-package com.yhdx.common.util;
+package com.lixl.mybatis.demo.disruptor;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * InternalThreadFactory.
- * 
- * 参考dubbo
+ * InternalThreadFactory
  */
 
 public class NamedThreadFactory implements ThreadFactory {
