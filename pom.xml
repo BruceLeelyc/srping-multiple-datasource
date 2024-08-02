@@ -8,7 +8,7 @@
         <version>2.5.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lixl.mybatis</groupId>
+    <groupId>com.ice.mybatis</groupId>
     <artifactId>spring-multiple-datasource</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-multiple-datasource</name>

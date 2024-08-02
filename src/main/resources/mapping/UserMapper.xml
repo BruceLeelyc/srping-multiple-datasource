@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lixl.mybatis.demo.dao.user.UserDao">
-  <resultMap id="BaseResultMap" type="com.lixl.mybatis.demo.pojo.User">
+<mapper namespace="com.ice.mybatis.demo.dao.user.UserDao">
+  <resultMap id="BaseResultMap" type="com.ice.mybatis.demo.pojo.User">
     <id column="user_id" jdbcType="BIGINT" property="userId" />
     <result column="dept_id" jdbcType="BIGINT" property="deptId" />
     <result column="login_name" jdbcType="VARCHAR" property="loginName" />
@@ -39,7 +39,7 @@
     delete from sys_user
     where user_id = #{userId,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.lixl.mybatis.demo.pojo.User">
+  <insert id="insert" parameterType="com.ice.mybatis.demo.pojo.User">
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null"> user_id,
@@ -90,7 +90,7 @@
       </if>
     </trim>
   </insert>
-  <update id="update" parameterType="com.lixl.mybatis.demo.pojo.User">
+  <update id="update" parameterType="com.ice.mybatis.demo.pojo.User">
     update sys_user
     <set> <if test="deptId != null"> dept_id = #{deptId,jdbcType=BIGINT},
       </if> <if test="loginName != null"> login_name = #{loginName,jdbcType=VARCHAR},
