@@ -31,9 +31,7 @@ import java.util.List;
  * @Date: 2021/6/9 18:17
  */
 @Configuration
-@MapperScan(basePackages = {
-        "com.lixl.mybatis.demo.dao.user"
-}, sqlSessionFactoryRef = "powerfulSqlSessionFactory")
+@MapperScan(basePackages = {"com.lixl.mybatis.demo.dao.user"}, sqlSessionFactoryRef = "powerfulSqlSessionFactory")
 public class UserDaoConfig {
 
     @Value("${powerful.datasource.url}")

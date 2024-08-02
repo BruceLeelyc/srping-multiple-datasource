@@ -37,9 +37,7 @@ import java.util.List;
  * @Date: 2021/6/9 18:17
  */
 @Configuration
-@MapperScan(basePackages = {
-        "com.lixl.mybatis.demo.dao.sys"
-}, sqlSessionFactoryRef = "sysSqlSessionFactory")
+@MapperScan(basePackages = {"com.lixl.mybatis.demo.dao.sys"}, sqlSessionFactoryRef = "sysSqlSessionFactory")
 public class SysDaoConfig {
 
     @Value("${sys.datasource.url}")
